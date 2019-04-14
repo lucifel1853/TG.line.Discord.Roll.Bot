@@ -22,7 +22,7 @@ try {
 
 		if (trigger.match(/^成長$/) != null && mainMsg[1] <= 1000) { //ccb指令開始於此
 			//DevelopmentPhase幕間成長指令開始於此
-			if (trigger == '成長') && mainMsg[1] <= 1000) return exports.coc.DevelopmentPhase(mainMsg[1], mainMsg[2]);
+			if ((trigger == '成長') && mainMsg[1] <= 1000) return exports.coc.DevelopmentPhase(mainMsg[1], mainMsg[2]);
 		}
 	}
 

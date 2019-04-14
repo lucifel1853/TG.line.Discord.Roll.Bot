@@ -182,7 +182,7 @@ Step3：將DiscordBot部署到Heroku
 --
 
 * 按一下下面這個按鈕</br>
-按它→[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/zeteticl/DiscordRollBot_HKTRPG)←按它</br></br></br>
+按它→[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/wei840220/TG.line.Discord.Roll.Bot)←按它</br></br></br>
 ---
 
 * 你會看到這個</br>

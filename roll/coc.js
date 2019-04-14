@@ -242,11 +242,12 @@ function DevelopmentPhase(target, text) {
 	if (text == undefined) text = "";
 	let skill = rollbase.Dice(100);
 	let improved = rollbase.Dice(10);
-	if (target > 95) target = 95;
-	if (skill >= 96 || skill > target) {
-		rply.text = "成長或增強檢定: " + text + "\n1D100 > " + target + "\n" + skill + " → 成功!\n你的技能增加" + improved + "點!";
+	if (skill > target || skill <= 5) {
+		let result = improved + parseInt(target);
+		if (result > 99) result = 99;
+		rply.text = "成長或增強檢定: " + text + "\n1D100 > " + target + "\n" + skill + " → 成功！\n你的技能增加 " + improved + " 點；最終成長至 " + result + " 點！";
 	} else {
-		rply.text = "成長或增強檢定: " + text + "\n1D100 > " + target + "\n" + skill + " → 失敗!\n你的技能沒有變化!";
+		rply.text = "成長或增強檢定: " + text + "\n1D100 > " + target + "\n" + skill + " → 失敗！\n你的技能沒有變化！";
 	}
 	return rply;
 }
@@ -289,15 +290,11 @@ function ccsu() {
 ////////////////////////////////////////		
 function coc6(chack, text) {
 	let temp = rollbase.Dice(100);
-	if (text == null) {
-		if (temp == 100) rply.text = 'ccb<=' + chack + ' ' + temp + ' → 啊！大失敗！';
-		if (temp <= chack) rply.text = 'ccb<=' + chack + ' ' + temp + ' → 成功';
-		else rply.text = 'ccb<=' + chack + ' ' + temp + ' → 失敗';
-	} else {
-		if (temp == 100) rply.text = 'ccb<=' + chack + ' ' + temp + ' → 啊！大失敗！；' + text;
-		if (temp <= chack) rply.text = 'ccb<=' + chack + ' ' + temp + ' → 成功；' + text;
-		else rply.text = 'ccb<=' + chack + ' ' + temp + ' → 失敗；' + text;
-	}
+	if (temp > chack) rply.text = '1D100 ≦ ' + chack + "：\n" + temp + ' → 失敗';
+	if (temp <= chack) rply.text = '1D100 ≦ ' + chack + "：\n" + temp + ' → 成功';
+	if (temp <= 5 && temp <= chack) rply.text = '1D100 ≦ ' + chack + "：\n" + temp + ' → 恭喜！大成功！';
+	if (temp >= 96 && temp > chack) rply.text = '1D100 ≦ ' + chack + "：\n" + temp + ' → 啊！大失敗！';
+	if (text != null) rply.text += '：' + text;
 	return rply;
 }
 
@@ -490,10 +487,8 @@ function build6char() {
 		let DebuffArr = [5,0,5,10,20,40,80]
 		let AppDebuffArr = [0,0,5,10,15,20,25]
 		let EDUincArr = [0,1,2,3,4,4,4]
-
 		if (old < 15) rply.text = ReStr + '等等，核心規則不允許小於15歲的人物哦。';	
 		if (old >= 90) rply.text = ReStr + '等等，核心規則不允許90歲以上的人物哦。'; 
-
 		for ( i=0 ; old >= oldArr[i] ; i ++){
 			Debuff = DebuffArr[i];
 			AppDebuff = AppDebuffArr[i];

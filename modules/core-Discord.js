@@ -77,7 +77,7 @@ if (process.env.DISCORD_CHANNEL_SECRET) {
 		});
 		//Set Activity 可以自定義正在玩什麼  
 		client.on('ready', () => {
-			client.user.setGame('bothelp |運氣占卜「運勢」')
+			client.user.setActivity('bothelp |運氣占卜「運勢」', { type: 'PLAYING' });
 		})
 	} catch (e) {
 		console.log('catch error');

@@ -77,7 +77,7 @@ if (process.env.DISCORD_CHANNEL_SECRET) {
 		});
 		//Set Activity 可以自定義正在玩什麼  
 		client.on('ready', () => {
-			client.user.setActivity('bothelp |運氣占卜「運勢」', { type: 'PLAYING' });
+			client.user.setActivity('成長 50 拳頭 | 成長 拳頭 50', { type: 'PLAYING' });
 		})
 	} catch (e) {
 		console.log('catch error');
